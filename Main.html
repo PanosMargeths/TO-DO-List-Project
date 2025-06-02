@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>To-Do List Website</title>
+    <link rel="stylesheet" href="Style.css" />
+  </head>
+
+  <body>
+    <div class="CoreBackground">
+      <div class="to_do_list">
+        <!-- this div contains the text that stays in the top of the todoapp -->
+
+        <div class="toptext">
+          <div class="menu_text">
+            Menu
+            <div class="row">
+              <img class="search-icon" src="images/search.png" />
+              <input
+                class="input-box"
+                type="text Clickable"
+                placeholder="Search for task or list"
+              />
+            </div>
+
+            <!-- this ul holds the menu that includes the different options and uses of the todo app -->
+
+            <!-- This part is the tasks  -->
+            <!-- The "Task's"  vertical list from using ul and li's -->
+            <ul class="Tasks">
+              Tasks
+              <li>
+                <img class="sticky_icon" src="images/upcoming.png" />
+                <span class="Tasks_text Clickable Upcoming">upcoming</span>
+                <span class="number">1</span>
+              </li>
+
+              <li>
+                <img class="sticky_icon" src="images/today.png" />
+                <span class="Tasks_text Clickable Today">Today</span>
+                <span class="number">1</span>
+              </li>
+              <li>
+                <img class="sticky_icon" src="images/sticknote.png" />
+                <span class="Tasks_text Clickable StickWall">Sticky Wall</span>
+                <span class="number">1</span>
+              </li>
+            </ul>
+
+            <!-- This part is the Lists  -->
+            <!-- The "List's"  vertical list from using ul and li's -->
+            <ul class="Lists">
+              Lists
+              <li>
+                <img class="sticky_icon" src="images/note1.png" />
+                <span class="List_text Clickable">List 1</span>
+                <span class="Listnumber">1</span>
+              </li>
+              <li>
+                <img class="sticky_icon" src="images/note2.png" />
+                <span class="List_text Clickable">List 2</span>
+                <span class="Listnumber">1</span>
+              </li>
+              <li>
+                <img class="sticky_icon" src="images/note3.png" />
+                <span class="List_text Clickable">List 3</span>
+                <span class="Listnumber">1</span>
+              </li>
+              <li>
+                <img class="sticky_icon" src="images/note4.png" />
+                <span class="List_text Clickable">List 4</span>
+                <span class="Listnumber">1</span>
+              </li>
+            </ul>
+          </div>
+          <div class="todoapp_text">
+            To Do App
+            <div class="StickyPanel CoreWork">
+              <div class="note1">
+                <div class="note_div">
+                <span class="note_title">Title</span>
+                <li class="note_text">text1</li>
+                <li class="note_text">text2</li>
+                <li class="note_text">text3</li>
+                </div>
+              </div>
+              <div class="note2">
+                 <div class="note_div">
+                <span class="note_title">Title</span>
+                <li class="note_text">text1</li>
+                <li class="note_text">text2</li>
+                <li class="note_text">text3</li>
+                </div>
+              </div>
+              <div class="note3">
+                 <div class="note_div">
+                <span class="note_title">Title</span>
+                <li class="note_text">text1</li>
+                <li class="note_text">text2</li>
+                <li class="note_text">text3</li>
+                </div>
+              </div>
+              <div class="note4">
+                 <div class="note_div">
+                <span class="note_title">Title</span>
+                <li class="note_text">text1</li>
+                <li class="note_text">text2</li>
+                <li class="note_text">text3</li>
+                </div>
+              </div>
+              <div class="note5">
+                 <div class="note_div">
+                <span class="note_title">Title</span>
+                <li class="note_text">text1</li>
+                <li class="note_text">text2</li>
+                <li class="note_text">text3</li>
+                </div>
+              </div>
+              <div class="note6">
+                <img class="plusicon Clickable" src="images/plus.png">
+              </div>
+            </div>
+            <div class="TodayPanel"></div>
+            <div class="UpcomingPanel"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // im creating a constant cliclable variable to stash
+      // a nodelist of the class names that i want to be clickable
+      // the list contains Upcoming, Today, StickWall
+      // the tags that contain these class names are li and all of them have 3 names:
+      //  Menu_text or List_Text + Clickable + their specific name (Upcoming or Today or StickWall)
+      const clickableItems = document.querySelectorAll(".Clickable");
+
+      // This is Loop that reds all "items" and applies an eventlistener(click)
+      // then uses a function to apply general code to all items or specific code in order to
+      // switch between "Panels".  Panels are the divs that contain the contents of the li options after being clicked
+      clickableItems.forEach((item) => {
+        item.addEventListener("click", () => {
+          item.style.fontWeight = "650";
+
+          if (item.classList.contains("Upcoming")) {
+            document.getElementsByClassName("UpcomingPanel")[0].style.display =
+              "flex";
+            document.getElementsByClassName("TodayPanel")[0].style.display =
+              "none";
+            document.getElementsByClassName("StickyPanel")[0].style.display =
+              "none";
+          }
+          if (item.classList.contains("Today")) {
+            document.getElementsByClassName("TodayPanel")[0].style.display =
+              "flex";
+            document.getElementsByClassName("UpcomingPanel")[0].style.display =
+              "none";
+            document.getElementsByClassName("StickyPanel")[0].style.display =
+              "none";
+          }
+          if (item.classList.contains("StickWall")) {
+            document.getElementsByClassName("StickyPanel")[0].style.display =
+              "flex";
+            document.getElementsByClassName("TodayPanel")[0].style.display =
+              "none";
+            document.getElementsByClassName("UpcomingPanel")[0].style.display =
+              "none";
+          }
+        });
+      });
+
+      // a loop that applies a mouseover eventlistener to the clickableItems and gives the general attributes
+      clickableItems.forEach((item) => {
+        item.addEventListener("mouseover", () => {
+          item.style.fontWeight = "bold";
+          item.style.transform = "scale(1.03)";
+          item.style.boxShadow = "0 0 0px rgba(0,0,0,0.5)";
+        });
+        // a loop that applies a mouseout eventlistener to the clickableItems and resets the attributes from mouseover
+        //the attributes get a default value
+        item.addEventListener("mouseout", () => {
+          item.style.backgroundColor = "";
+          item.style.fontWeight = "";
+          item.style.transform = "";
+          item.style.boxShadow = "";
+        });
+      });
+    </script>
+  </body>
+</html>
