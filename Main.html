@@ -73,53 +73,106 @@
               </li>
             </ul>
           </div>
+
+          
+          <!-- Main To-Do App Content -->
           <div class="todoapp_text">
             To Do App
             <div class="StickyPanel CoreWork">
-              <div class="note1">
+
+              <!-- NOTE 1 --> 
+              <div class="note1 notes">
                 <div class="note_div">
-                <span class="note_title">Title</span>
-                <li class="note_text">text1</li>
-                <li class="note_text">text2</li>
-                <li class="note_text">text3</li>
+                  <div class="note_selection icon">
+                    <img data-action="unselected" class="selection_iconb IconSelect" src="images/circle.png" />
+                    <img data-action="selected" class="selection_icona IconSelect" src="images/check.png" />
+                  </div>
+                  <span class="note_title">Title</span>
+                  <li class="note_text">text1</li>
+                  <li class="note_text">text2</li>
+                  <li class="note_text">text3</li>
                 </div>
               </div>
-              <div class="note2">
-                 <div class="note_div">
-                <span class="note_title">Title</span>
-                <li class="note_text">text1</li>
-                <li class="note_text">text2</li>
-                <li class="note_text">text3</li>
+
+              <!-- NOTE 2 -->
+              <div class="note2 notes">
+
+                <div class="note_div">
+
+                  <div class="note_selection icon">
+                    <img data-action="unselected" class="selection_iconb IconSelect" src="images/circle.png" />
+                    <img data-action="selected" class="selection_icona IconSelect" src="images/check.png" />
+                  </div>
+
+                  <span class="note_title">Title</span>
+                  <li class="note_text">text1</li>
+                  <li class="note_text">text2</li>
+                  <li class="note_text">text3</li>
+
+
                 </div>
               </div>
-              <div class="note3">
-                 <div class="note_div">
-                <span class="note_title">Title</span>
-                <li class="note_text">text1</li>
-                <li class="note_text">text2</li>
-                <li class="note_text">text3</li>
+
+              <!-- NOTE 3 -->
+              <div class="note3 notes">
+
+                <div class="note_div">
+
+                  <div class="note_selection icon" src=>
+                    <img data-action="unselected" class="selection_iconb IconSelect" src="images/circle.png" />
+                    <img data-action="selected" class="selection_icona IconSelect" src="images/check.png" />
+                  </div>
+
+                  <span class="note_title">Title</span>
+                  <li class="note_text">text1</li>
+                  <li class="note_text">text2</li>
+                  <li class="note_text">text3</li>
+
+                </div>
+
+              </div>
+
+              <!-- NOTE 4 -->
+              <div class="note4 notes">
+
+                <div class="note_div">
+
+                  <div class="note_selection icon">
+                    <img data-action="unselected" class="selection_iconb IconSelect" src="images/circle.png" />
+                    <img data-action="selected" class="selection_icona IconSelect" src="images/check.png" />
+                  </div>
+
+                  <span class="note_title">Title</span>
+                  <li class="note_text">text1</li>
+                  <li class="note_text">text2</li>
+                  <li class="note_text">text3</li>
+
+
                 </div>
               </div>
-              <div class="note4">
-                 <div class="note_div">
-                <span class="note_title">Title</span>
-                <li class="note_text">text1</li>
-                <li class="note_text">text2</li>
-                <li class="note_text">text3</li>
+
+              <!-- NOTE 5 -->
+              <div class="note5 notes">
+                <div class="note_div">
+                  <div class="note_selection icon">
+                    <img data-action="unselected" class="selection_iconb IconSelect" src="images/circle.png" />
+                    <img data-action="selected" class="selection_icona IconSelect" src="images/check.png" />
+                  </div>
+                  <span class="note_title">Title</span>
+                  <li class="note_text">text1</li>
+                  <li class="note_text">text2</li>
+                  <li class="note_text">text3</li>
+
                 </div>
               </div>
-              <div class="note5">
-                 <div class="note_div">
-                <span class="note_title">Title</span>
-                <li class="note_text">text1</li>
-                <li class="note_text">text2</li>
-                <li class="note_text">text3</li>
-                </div>
-              </div>
-              <div class="note6">
-                <img class="plusicon Clickable" src="images/plus.png">
+
+              <!-- Note 6: Plus icon for adding new notes -->
+              <div class="note6 notes">
+                <img class="plusicon Clickable" src="images/plus.png" />
               </div>
             </div>
+
+            <!-- Panels for different task views -->
             <div class="TodayPanel"></div>
             <div class="UpcomingPanel"></div>
           </div>
@@ -128,16 +181,10 @@
     </div>
 
     <script>
-      // im creating a constant cliclable variable to stash
-      // a nodelist of the class names that i want to be clickable
-      // the list contains Upcoming, Today, StickWall
-      // the tags that contain these class names are li and all of them have 3 names:
-      //  Menu_text or List_Text + Clickable + their specific name (Upcoming or Today or StickWall)
+     // Select all clickable elements (tasks, lists, icons)
       const clickableItems = document.querySelectorAll(".Clickable");
 
-      // This is Loop that reds all "items" and applies an eventlistener(click)
-      // then uses a function to apply general code to all items or specific code in order to
-      // switch between "Panels".  Panels are the divs that contain the contents of the li options after being clicked
+      // Add click event listeners to toggle display of relevant panels
       clickableItems.forEach((item) => {
         item.addEventListener("click", () => {
           item.style.fontWeight = "650";
@@ -169,15 +216,53 @@
         });
       });
 
-      // a loop that applies a mouseover eventlistener to the clickableItems and gives the general attributes
+      // Select all icons that toggle selection state
+      const IconClickItem = document.querySelectorAll(".IconSelect") 
+  
+      // Loop through all elements with the class "IconSelect"
+      IconClickItem.forEach((item)=> {
+        // Add a click event listener to each icon
+        item.addEventListener('click', function iconselect(event) { 
+
+          // Get the clicked icon or its closest parent with a [data-action] attribute
+          const icon = event.target.closest('[data-action]');
+          
+          // Find the nearest parent container with class "note_selection"
+          const parent = icon.closest('.note_selection');
+
+          // Select both icons inside this note container
+          const allicons = parent.querySelectorAll('.IconSelect');
+
+          // Assign references for clarity
+          const icon1 = allicons[0] //Unselected
+          const icon2 = allicons[1] //Selected
+
+          // Get the value of the clicked icon's data-action attribute
+          const action = icon.dataset.action; // Unselected or Selected
+
+          // Debug logs (for development)
+          console.log(icon);
+          console.log();
+
+          if (action === 'unselected') {
+            icon1.classList.toggle('hidden', true) // hide unselected icon
+            icon2.classList.toggle('show', true) // show selected icon
+          } else if (action === 'selected') {
+            icon2.classList.toggle('show', false) // hide selected icon
+            icon1.classList.toggle('hidden', false) // show unselected icon
+          }
+        })
+      })  
+      
+
+      // Add hover effects to clickable items for better UX
       clickableItems.forEach((item) => {
         item.addEventListener("mouseover", () => {
           item.style.fontWeight = "bold";
           item.style.transform = "scale(1.03)";
           item.style.boxShadow = "0 0 0px rgba(0,0,0,0.5)";
         });
-        // a loop that applies a mouseout eventlistener to the clickableItems and resets the attributes from mouseover
-        //the attributes get a default value
+        // Reset styles on mouse leave
         item.addEventListener("mouseout", () => {
           item.style.backgroundColor = "";
           item.style.fontWeight = "";
@@ -185,6 +270,9 @@
           item.style.boxShadow = "";
         });
       });
+    
+      c
+
     </script>
   </body>
 </html>
